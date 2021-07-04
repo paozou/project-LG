@@ -8,8 +8,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'launch_games_db',
-        'USER': 'user',
-        'PASSWORD': 'password',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': 'db',
         'PORT': '5432',
     }

@@ -1,0 +1,22 @@
+if test "$1" = "rollback" ; then
+  docker-compose run --rm web-back sh -c "python3 manage.py migrate admin zero"
+  docker-compose run --rm web-back sh -c "python3 manage.py migrate auth zero"
+  docker-compose run --rm web-back sh -c "python3 manage.py migrate contenttypes zero"
+  docker-compose run --rm web-back sh -c "python3 manage.py migrate drf zero"
+  docker-compose run --rm web-back sh -c "python3 manage.py migrate sessions zero"
+fi
+docker-compose run --rm web-back sh -c "python3 manage.py makemigrations"
+docker-compose run --rm web-back sh -c "python3 manage.py migrate"
+expect -c "
+spawn docker-compose run --rm web-back sh -c \"python3 manage.py createsuperuser\"
+expect \"ユーザー名\"
+send \"admin\n\"
+expect \"メールアドレス\"
+send \"admin@gmail.com\n\"
+expect \"Password\"
+send \"prolg1234\n\"
+expect \"Password (again)\"
+send \"prolg1234\n\"
+expect "
+docker-compose run --rm web-back sh -c "python3 manage.py collectstatic --noinput"
+exit 0
