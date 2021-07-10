@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Local
     'drf.apps.DrfConfig',
+    'register.apps.RegisterConfig',
 ]
 
 MIDDLEWARE = [
