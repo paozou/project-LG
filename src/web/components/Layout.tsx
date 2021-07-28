@@ -1,19 +1,17 @@
 import { ReactNode, VFC } from 'react'
-import Head from "next/head"
-import Link from "next/link"
-import Image from 'next/image'
+import Head from 'next/head'
+import Link from 'next/link'
 
 interface Props {
   children: ReactNode
   title: string
 }
-
-const Layout: VFC<Props> = ({
+export const Layout: VFC<Props> = ({
   children,
   title = 'Welcome to Nextjs',
 }) => {
   return (
-    <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 text-sm font-mono">
+    <div className="flex flex-col justify-center min-h-screen text-gray-600 text-sm font-mono">
       <Head>
         <title>{title}</title>
       </Head>
@@ -22,40 +20,32 @@ const Layout: VFC<Props> = ({
           <div className="flex items-center pl-8 h-14">
             <div className="flex space-x-4">
               <Link href="/">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
                   Home
                 </a>
               </Link>
-              <Link href="/blog-page">
+              <Link href="/mypage">
                 <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
-                  Blog
+                  マイページ
                 </a>
               </Link>
-              <Link href="/contact-page">
+              <Link href="/match">
                 <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
-                  Contact
+                  マッチング
                 </a>
               </Link>
             </div>
           </div>
         </nav>
       </header>
-      <main className="flex flex-1 justify-center items-center flex-col w-screen">
+      <main className="flex flex-1 flex-col justify-center items-center w-screen">
         {children}
       </main>
       <footer className="w-full h-12 flex justify-center items-center border-t">
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className="h-4 ml-2">
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+        <Link href="/">
+          <a className="flex items-center">Launch Games</a>
+        </Link>
       </footer>
     </div>
-  );
+  )
 }
-export default Layout;
