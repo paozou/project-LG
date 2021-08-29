@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { auth } from '../utils/firebase'
 import { AuthContext } from '../auth/AuthProvider'
 import { Layout } from '../components/Layout'
+import { Modal } from '../components/Modal'
 
 const SignUp: FC = () => {
   const router = useRouter()
@@ -61,6 +62,7 @@ const SignUp: FC = () => {
           <a className="auth-link">Login</a>
         </Link>
       </div>
+      <Modal />
     </Layout>
   )
 }
